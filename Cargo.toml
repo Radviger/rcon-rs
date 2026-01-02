@@ -8,3 +8,13 @@ edition = "2024"
 [dependencies]
 byteorder = "1.5"
 thiserror = "2.0"
+clap = { version = "4.5", features = ["derive"], optional = true }
+humantime = { version = "2.3", optional = true }
+
+[features]
+build-binary = ["clap", "humantime"]
+
+[[bin]]
+name = "rcon"
+path = "src/cli.rs"
+required-features = ["build-binary"]
